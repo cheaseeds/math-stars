@@ -1,4 +1,4 @@
-#Math Stars
+# Math Stars
 
 * This program is designed to keep track of students and their number of stars.
 * It will be able to perform CRUD operations to create, read, update and delete students from the database.
