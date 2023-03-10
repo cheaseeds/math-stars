@@ -26,13 +26,15 @@ if (isset($_POST['routine'])) {
             }
             $result = mysqli_query($conn, "CALL read_student($s_idx)");
 
-            if (mysqli_num_rows($result) > 0) {
-                $students = array();
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $students[] = $row;
+            if (mysqli_num_rows($result) > 0) { // checks if the result has a row
+                $students = array();  // makes an empty array
+                
+                while ($row = mysqli_fetch_assoc($result)) { // gets one row of data
+                    $students[] = $row; // appends student with the row of data
                 }
-
+                
                 include 'index.php';
+                
             } else {
                 echo "Error: No student found at index $s_idx.";
                 echo '<br><br>';
@@ -53,7 +55,11 @@ if (isset($_POST['routine'])) {
                 }
 
                 include 'index.php';
-            }
+        } else {
+            echo "Empty database";
+            echo '<br><br>';
+            echo '<button onclick="location.href=\'index.php\';">Go back</button>';
+        }
     } 
     // UPDATE_STUDENT
     else if ($routine == "update_student") {
@@ -63,12 +69,13 @@ if (isset($_POST['routine'])) {
             $result = mysqli_query($conn, "SELECT * FROM `student` WHERE idx = $s_u_idx");
             if (mysqli_num_rows($result) > 0) { //checks if we were able to find a student with that index
 
-                $s_first_name = $_POST['s_first_name'];
-                $s_last_name = $_POST['s_last_name'];
-                $s_star_num = $_POST['s_star_num'];
+                $s_u_first_name = $_POST['s_u_first_name'];
+                $s_u_last_name = $_POST['s_u_last_name'];
+                $s_u_star_num = $_POST['s_u_star_num'];
 
-                $result = mysqli_query($conn, "CALL update_student($s_u_idx, '$s_first_name', '$s_last_name', $s_star_num)");
+                $result = mysqli_query($conn, "CALL update_student($s_u_idx, '$s_u_first_name', '$s_u_last_name', $s_u_star_num)");
                 if ($result) {
+                    
                     header("Location: index.php");
                     exit();
                 } else {
@@ -83,6 +90,22 @@ if (isset($_POST['routine'])) {
         }
 
     }
+    // CREATE_STUDENT 
+    else if ($routine == "add_student") {
+        if (isset($_POST['s_c_first_name']) && isset($_POST['s_c_last_name']) && isset($_POST['s_c_star_num'])) {
+            $s_c_first_name = $_POST['s_c_first_name'];
+            $s_c_last_name = $_POST['s_c_last_name'];
+            $s_c_star_num = $_POST['s_c_star_num'];
+
+            $result = mysqli_query($conn, "CALL add_student('$s_c_first_name', '$s_c_last_name', $s_c_star_num)");
+            if ($result) {    
+                header("Location: index.php");
+                echo '<button onclick="location.href=\'index.php\';">Go back</button>';
+                exit();
+            }
+        }
+    }
+
     // DELETE_STUDENT ***NOT IMPLEMENTED***
     else if ($routine == "delete_student") {
         $s_idx = $_POST['s_idx'];
