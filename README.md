@@ -10,3 +10,4 @@
 * Add a new table for student roster to keep track of index and active/inactive students
 * Add a new table for student star levels and card numbers 
 * Set that table relation to student table according to index
+* Create a table.php to show table and differentiate it from operations being done on the table.
