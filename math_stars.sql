@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 01:50 PM
+-- Generation Time: Mar 11, 2023 at 10:56 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -45,7 +45,7 @@ END$$
 DROP PROCEDURE IF EXISTS `read_all_student`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `read_all_student` ()   BEGIN
 
-SELECT uid, CONCAT(first_name, ' ', last_name) AS "Name", star_num AS "Stars" FROM student;
+SELECT idx, uid, CONCAT(first_name, ' ', last_name) AS "Name", star_num AS "Stars" FROM student;
 
 
 END$$
@@ -53,7 +53,7 @@ END$$
 DROP PROCEDURE IF EXISTS `read_student`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `read_student` (IN `s_idx` INT(11))   BEGIN
 
-SELECT s.uid, CONCAT(s.first_name, ' ', s.last_name) AS "Name", s.star_num AS "Stars"
+SELECT s.idx, s.uid, CONCAT(s.first_name, ' ', s.last_name) AS "Name", s.star_num AS "Stars"
 FROM `student` AS s
 WHERE idx=s_idx;
 
@@ -92,9 +92,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`idx`, `uid`, `first_name`, `last_name`, `star_num`) VALUES
-(1, 'b84a65b4-bd9f-11ed-addb-244bfedee9a7', 'JULIE', 'NGUYEN', 100000),
+(1, 'b84a65b4-bd9f-11ed-addb-244bfedee9a7', 'ALEX', 'CHEA', 100),
 (2, '11dae4ad-bda2-11ed-addb-244bfedee9a7', 'TEST', 'CHEA', 150),
-(3, '23d84fb8-bda2-11ed-addb-244bfedee9a7', 'ALEX', 'CHEA', 500);
+(3, '23d84fb8-bda2-11ed-addb-244bfedee9a7', 'CHRIS', 'P', 2000),
+(4, 'a3718888-bf05-11ed-8090-244bfedee9a7', 'NOT', 'LAST', 1000),
+(5, 'd2f80caa-bf05-11ed-8090-244bfedee9a7', 'BOBBY', 'BOB', 123);
 
 --
 -- Triggers `student`
@@ -124,7 +126,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
