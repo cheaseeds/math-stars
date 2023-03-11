@@ -90,7 +90,7 @@ if (isset($_POST['routine'])) {
         }
 
     }
-    // CREATE_STUDENT 
+    // ADD_STUDENT 
     else if ($routine == "add_student") {
         if (isset($_POST['s_c_first_name']) && isset($_POST['s_c_last_name']) && isset($_POST['s_c_star_num'])) {
             $s_c_first_name = $_POST['s_c_first_name'];
@@ -106,12 +106,16 @@ if (isset($_POST['routine'])) {
         }
     }
 
-    // DELETE_STUDENT ***NOT IMPLEMENTED***
+    // DELETE_STUDENT
     else if ($routine == "delete_student") {
-        $s_idx = $_POST['s_idx'];
-        $result = mysqli_query($conn, "CALL delete_student($s_idx,)") or die("Error");
+        $s_d_idx = $_POST['s_d_idx'];
+        $result = mysqli_query($conn, "CALL delete_student($s_d_idx)");
 
-        echo '<button onclick="location.href=\'index.php\';">Go back</button>';
+        if ($result) {    
+            header("Location: index.php");
+            echo '<button onclick="location.href=\'index.php\';">Go back</button>';
+            exit();
+        }
     }
 }
 
