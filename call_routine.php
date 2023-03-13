@@ -53,8 +53,9 @@ if (isset($_POST['routine'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $students[] = $row;
                 }
-
+                
                 include 'index.php';
+                
         } else {
             echo "Empty database";
             echo '<br><br>';
