@@ -29,9 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $user = mysqli_fetch_assoc($result);
         
-        if ($password == $user['pword']) {
+        if (password_verify($password, $user['pword'])) {
             
             $_SESSION['user_id'] = $user['uid'];
+            
             header('Location: index.php');
             exit();
 
