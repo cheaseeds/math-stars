@@ -8,11 +8,13 @@
 ## To do list:
 
 * Add a new table for student roster to keep track of index and active/inactive students
-* Add a new table for student star levels and card numbers 
 * Set that table relation to student table according to index
-* Remove display table function/routine and have the display table button query the database itself.
+* Remove display table function/routine and have the display table button query the database itself
+* Finish implementing register.php
+    * Add a button to redirect back to login.php
+* Implement password hashing to database instead of being stored in plain text
 
 
 ## Bugs:
 
-* Whenever you add or update a student, the table will not show student information.
+* Nothing to note at the moment
