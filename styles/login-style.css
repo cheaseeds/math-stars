@@ -72,7 +72,7 @@ button:hover{
 }
 
 .error {
-   background: #F2DEDE;
+   background: #ffffff;
    color: #0c0101;
    padding: 10px;
    width: 95%;
@@ -113,5 +113,5 @@ a {
 }
 
 a:hover{
-    opacity: .7;
+    opacity: .10;
 }
