@@ -1,13 +1,49 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "math_stars_users";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$conn) {
 	die("Failed to connect to MySQL: " . mysqli_connect_error());
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $username = $_POST['uname'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE uname = '$username'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+
+        $user = mysqli_fetch_assoc($result);
+        
+        if ($password == $user['pword']) {
+            
+            $_SESSION['user_id'] = $user['uid'];
+            header('Location: index.php');
+            exit();
+
+            
+        } else {
+            $error = "Incorrect password";
+        }
+
+    } else {
+        $error = "User not found";
+    }
+
 }
 
 ?>
@@ -23,7 +59,7 @@ if (!$conn) {
             Math Stars
         </h1>
     </header>
-    <form action="login.php" method="post">
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
 
         <h2>Login</h2>
         <?php if (isset($_GET['error'])) { ?>
@@ -33,13 +69,10 @@ if (!$conn) {
         <input type="text" name="uname" placeholder="User Name"><br>
         <label>Password</label>
         <input type="password" name="password" placeholder="Password"><br> 
-        <button type="submit">Login</button>
+        <button type="submit" name="login" >Login</button>
         <a onclick="location.href='register.php'">Register</a>
         
-
     </form>
     
     
-        
-
-    </html>
+</html>
