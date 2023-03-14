@@ -8,7 +8,7 @@
 ## To do list:
 
 * Add a new table for student roster to keep track of index and active/inactive students
-* Set that table relation to student table according to index
+    * Set that table relation to student table according to index
 * Remove display table function/routine and have the display table button query the database itself
 * Finish implementing register.php
     * Add a button to redirect back to login.php
