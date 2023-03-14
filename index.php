@@ -56,7 +56,7 @@ if (!$conn) {
         </h1>       
     </header>
     <p style="color: white; background-color: red; border: 0; margin: 0; font-size: 1.75rem" >
-        Hello <?php echo $user_first_name;?>!
+              Logged in as <?php echo $user_first_name;?>
     </p>
     
     <div class="row">
@@ -132,7 +132,7 @@ if (!$conn) {
             </div>
             <div class="column-table">  
                 <h2 id="table-title">Student Information</h2>             
-                <table style="width: 85%" id="my-table" class="tablesorter"> 
+                <table id="my-table" class="tablesorter"> 
                     <thead>
                         <tr>
                             <th>Index</th>
