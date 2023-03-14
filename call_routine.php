@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -34,12 +40,11 @@ if (isset($_POST['routine'])) {
                 }
                 
                 include 'index.php';
-                
+            
             } else {
                 echo "Error: No student found at index $s_idx.";
                 echo '<br><br>';
                 echo '<button onclick="location.href=\'index.php\';">Go back</button>';
-
             }
         } else {
             echo "Error: Student ID is required.";

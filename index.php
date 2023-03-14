@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -88,7 +94,6 @@ if (!$conn) {
             th {
                 font-size: 1.5rem;
             }
-            
             .button-47 {
                 align-items: center;
                 background: #FFFFFF;
@@ -111,8 +116,7 @@ if (!$conn) {
                 cursor: pointer;
                 user-select: none;
                 -webkit-user-select: none;
-                touch-action: manipulation;
-        
+                touch-action: manipulation;       
             }
             footer {
                 color: white; 
@@ -121,16 +125,46 @@ if (!$conn) {
                 height: auto;
                 width: auto;
             }
+            a {
+                float: right;
+                align-items: center;
+                background: #FFFFFF;
+                border: 0 solid #E2E8F0;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                box-sizing: border-box;
+                color: #1A202C;
+                display: inline-flex;
+                font-family: Inter, sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                height: 16px;
+                justify-content: center;
+                line-height: 24px;
+                overflow-wrap: break-word;
+                padding: 18px;
+                text-decoration: none;
+                width: auto;
+                border-radius: 8px;
+                cursor: pointer;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;     
+        }
             
         </style>
 </head>
 
 <body>
     <header>
-        <h1>Math Stars</h1>
+        <h1>Math Stars
+            <div>
+                <a onclick="location.href='logout.php'">Logout</a>
+                <div>
+        </h1>
+        
     </header>
     <p style="color: white; background-color: red; border: 0; margin: 0" >
-        This is just a testing page for the different functions being implemented!!!
+        Hello!
     </p>
 
     <!--

@@ -1,13 +1,41 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "math_stars_users";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$conn) {
 	die("Failed to connect to MySQL: " . mysqli_connect_error());
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email_address = $_POST['email_address'];
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users (username, password, first_name, last_name, email_address) VALUES ('$username', '$hashed_password', '$first_name', '$last_name', '$email_address')";
+
+    if (mysqli_query($conn, $sql)) {
+        header("Location: index.php"); 
+        exit();
+    } else {
+        $error = "Error: " . mysqli_error($conn);
+        header("Location: register.php?error=$error"); 
+        exit();
+    }
 }
 
 ?>
