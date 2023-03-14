@@ -45,19 +45,24 @@ if (!$conn) {
                 box-sizing: content-box;
             }
         </style>
-</head>
+    </head>
 
 <body>
     <header>
-        <h1>Math Stars
-            <div>
-                <a onclick="location.href='logout.php'">Logout</a>
-                <div>
-        </h1>       
-    </header>
-    <p style="color: white; background-color: red; border: 0; margin: 0; font-size: 1.75rem" >
+        
+        <a onclick="location.href='index.php'"><h1>Math Stars</h1></a>
+        <nav>
+        
+            <a id="logout" onclick="location.href='logout.php'">Logout</a>
+        
+            <p style="color: white; background-color: red; border: 0; margin: 0; font-size: 1.75rem" >
               Logged in as <?php echo $user_first_name;?>
-    </p>
+            </p>
+    </nav> 
+    </header>
+
+    
+   
     
     <div class="row">
         <div class="container">
