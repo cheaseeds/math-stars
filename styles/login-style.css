@@ -68,7 +68,7 @@ button {
 }
 
 button:hover{
-    opacity: .10;
+    opacity: .70;
 }
 
 .error {
@@ -113,5 +113,5 @@ a {
 }
 
 a:hover{
-    opacity: .10;
+    opacity: .70;
 }

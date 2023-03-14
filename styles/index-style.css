@@ -109,7 +109,12 @@ th {
 .button-47:hover{
     opacity: .70;
 }
-a {
+
+a:hover {
+    cursor: pointer;
+    
+}
+#logout {
     float: right;
     align-items: center;
     background: #FFFFFF;
@@ -125,7 +130,7 @@ a {
     justify-content: center;
     line-height: 24px;
     overflow-wrap: break-word;
-    padding: 18px;
+    padding: 12px;
     text-decoration: none;
     width: auto;
     border-radius: 8px;
