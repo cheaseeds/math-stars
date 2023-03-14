@@ -1,0 +1,145 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 30px;
+    background-color: red;
+    color: white;
+    border: 0;
+    margin: 0;
+}
+h2 {
+    margin: 10px;
+}
+body {
+    margin: auto;
+}
+button {
+    cursor: pointer;
+}
+td {
+    text-align: center;
+    font-size: 1.05rem;
+}
+p {
+    color: blue;
+    margin: auto;
+}
+#desc {
+    margin: 10px;
+}
+#table-title {
+    text-align: center;
+}
+input {
+    display: block;
+    border: 2px solid #ccc;
+    width: 50%;
+    padding: 10px;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+
+form {
+    margin: 20px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    float: left;
+    width: 30%;
+    background-color:#d4cecd; 
+    height: 100%;
+    border-right: 1px solid black;
+}
+.container {
+    display: flex;
+    height: 100%;
+    
+}
+.column-buttons {
+    float: left;
+    width: 30%;
+    background-color:#d4cecd; 
+    height: 100%;
+    border-right: 1px solid black;
+    
+}
+.column-table {
+    float: right;
+    width: 70%;                
+    background-color: rgb(255, 255, 255); 
+    height: 100%;
+    
+}
+th {
+    font-size: 1.25rem;
+    text-align: center;
+}
+.button-47 {
+    align-items: center;
+    background: #FFFFFF;
+    border: 0 solid #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    color: #1A202C;
+    display: inline-flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 16px;
+    justify-content: center;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    padding: 18px;
+    text-decoration: none;
+    width: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;     
+    margin: 1px;  
+}
+.button-47:hover{
+    opacity: .70;
+}
+a {
+    float: right;
+    align-items: center;
+    background: #FFFFFF;
+    border: 0 solid #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    color: #1A202C;
+    display: inline-flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 16px;
+    justify-content: center;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    padding: 18px;
+    text-decoration: none;
+    width: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 1px;     
+}
+a:hover{
+    opacity: .70;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
