@@ -26,23 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) == 1) {
-
         $user = mysqli_fetch_assoc($result);
-        
-        if (password_verify($password, $user['pword'])) {
-            
-            $_SESSION['user_id'] = $user['uid'];
-            
+        if (password_verify($password, $user['pword'])) {      
+            $_SESSION['user_id'] = $user['uid'];         
             header('Location: index.php');
-            exit();
-
-            
+            exit();           
         } else {
-            $error = "Incorrect password";
+            $error = "Incorrect password!";
         }
-
     } else {
-        $error = "User not found";
+        $error = "User not found!";
     }
 
 }
@@ -63,17 +56,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
 
         <h2>Login</h2>
+        <?php if (!empty($error)) { ?>
+        <p><?php echo $error; ?></p>
+        <?php } ?>
         <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>
         <label>User Name</label>
-        <input type="text" name="uname" placeholder="User Name"><br>
+        <input type="text" name="uname" placeholder="User Name">
+        
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password"><br> 
+        <input type="password" name="password" placeholder="Password">
+        
+        <br>
         <button type="submit" name="login" >Login</button>
         <a onclick="location.href='register.php'">Register</a>
         
     </form>
+
+    
+
+
     
     
 </html>
