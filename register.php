@@ -24,12 +24,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $last_name = $_POST['last_name'];
     $email_address = $_POST['email_address'];
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE uname = '$username'");
+    if (mysqli_num_rows($result) == 1) {
+        $error = "Username already exists!";
+        header("Location: register.php?error=$error"); 
+        exit();
+    } else {
 
-    $sql = "INSERT INTO users (username, password, first_name, last_name, email_address) VALUES ('$username', '$hashed_password', '$first_name', '$last_name', '$email_address')";
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (uname, pword, user_first_name, user_last_name, email_address) VALUES ('$username', '$password', '$first_name', '$last_name', '$email_address')";
 
+    }
     if (mysqli_query($conn, $sql)) {
-        header("Location: index.php"); 
+        header("Location: login.php"); 
         exit();
     } else {
         $error = "Error: " . mysqli_error($conn);
