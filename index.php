@@ -12,21 +12,48 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "math_stars";
-$userdbname = "math_stars_users";
+//$userdbname = "math_stars_users";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-mysqli_select_db($conn, $userdbname);
+/**
+ * TODO: bind my statements for security against SQL injections
+ */
+
+
+/**
+ * connects to the user database
+ * queries the database for the user that we logged in with
+ */
+/*mysqli_select_db($conn, $userdbname);
 $user_id = $_SESSION['user_id'];
 $query = "SELECT user_first_name FROM users WHERE uid = '$user_id'";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
-$user_first_name = $row['user_first_name'];
+$user_first_name = $row['user_first_name'];*/
 
 if (!$conn) {
 	die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
 
-
+/**
+ * connects to the information database
+ * queries the database for the information associated with the user
+ */
+mysqli_select_db($conn, $dbname);
+$result = mysqli_query($conn, "SELECT `idx`, `uid`, CONCAT(`first_name`, ' ', `last_name`) AS `Name`, `star_num` AS `Stars` FROM student");
+        if (mysqli_num_rows($result) > 0) {
+                $students = array();
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $students[] = $row;        
+                }
+                
+                
+                
+        } else {
+            echo "Empty database";
+            echo '<br><br>';
+            echo '<button onclick="location.href=\'index.php\';">Go back</button>';
+        }
 
 ?>
 
@@ -34,31 +61,26 @@ if (!$conn) {
 <html lang="en">
     <head>
     <link rel="stylesheet" href="tablesorter-master/tablesorter-master/dist/css/theme.default.min.css">
-
     <link rel="stylesheet" type="text/css" href="styles/index-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Mathnasium Stars</title>
         <style>
-            {
-                box-sizing: content-box;
-            }
+            
         </style>
     </head>
 
 <body>
     <header>
         
-        <a onclick="location.href='index.php'"><h1>Math Stars</h1></a>
+        <a style="opacity: 1" onclick="location.href='index.php'"><h1>Math Stars</h1></a>
         <nav>
-        
             <a id="logout" onclick="location.href='logout.php'">Logout</a>
-        
-            <p style="color: white; background-color: red; border: 0; margin: 0; font-size: 1.75rem" >
-              Logged in as <?php echo $user_first_name;?>
-            </p>
-    </nav> 
+            <!--<p style="color: white; background-color: red; border: 0; margin: 0; font-size: 1.75rem" >
+              Logged in as
+            </p>-->
+        </nav> 
     </header>
 
     
@@ -67,6 +89,7 @@ if (!$conn) {
     <div class="row">
         <div class="container">
             <div class="column-buttons">
+                <!--
                 <div class="form-container">
                     <h2>Read Student Data</h2>
                     <form method="post" action="call_routine.php">
@@ -87,9 +110,9 @@ if (!$conn) {
                         <button class="button-47" type="submit">Display</button>
                     </form>
                 </div>
-            
+                
                 <br>
-
+                -->
                 <div class="form-container">
                     <h2>Update Student Data</h2>       
                     <form method="post" action="call_routine.php">
@@ -163,7 +186,13 @@ if (!$conn) {
                 </table>
             </div>       
         </div>
-    </div>  
+    </div> 
+    
+    <footer>
+        <nav>
+            <a href="https://github.com/cheaseeds/math-stars"><img src="images/github.png"></a>
+        </nav>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="tablesorter-master/tablesorter-master/dist/js/jquery.tablesorter.min.js"></script>
     <script>
