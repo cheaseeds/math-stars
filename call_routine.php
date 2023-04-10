@@ -1,9 +1,11 @@
 <?php
 
+//if there is no session, start one
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+//if there is no user_id set, send them back to the login page
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
@@ -19,11 +21,14 @@ if (!$conn) {
 	die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
 
+
+// form data is submitted with the name=routine, action=call_routine.php and a value
+// sends the data here 
 if (isset($_POST['routine'])) {
     $routine = $_POST['routine'];
 
-    // READ_STUDENT
-    if ($routine == "read_student") {
+    // READ_STUDENT NOT IN USE!!!
+    /*if ($routine == "read_student") {
         if (isset($_POST['s_idx'])) {
             
             $s_idx = $_POST['s_idx'];
@@ -53,7 +58,7 @@ if (isset($_POST['routine'])) {
             echo "Error: Student ID is required.";
         }
     } 
-    // READ_ALL_STUDENT
+    // READ_ALL_STUDENT NOT IN USE!!!
     else if ($routine == "read_all_student") {
         $result = mysqli_query($conn, "CALL read_all_student()");
         if (mysqli_num_rows($result) > 0) {
@@ -69,9 +74,9 @@ if (isset($_POST['routine'])) {
             echo '<br><br>';
             echo '<button onclick="location.href=\'index.php\';">Go back</button>';
         }
-    } 
+    } */
     // UPDATE_STUDENT
-    else if ($routine == "update_student") {
+    if ($routine == "update_student") {
         if (isset($_POST['s_u_idx'])) {
             $s_u_idx = $_POST['s_u_idx'];
 
