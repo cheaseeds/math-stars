@@ -19,18 +19,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
  * TODO: bind my statements for security against SQL injections
  */
 
-
-/**
- * connects to the user database
- * queries the database for the user that we logged in with
- */
-/*mysqli_select_db($conn, $userdbname);
-$user_id = $_SESSION['user_id'];
-$query = "SELECT user_first_name FROM users WHERE uid = '$user_id'";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-$user_first_name = $row['user_first_name'];*/
-
 if (!$conn) {
 	die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
