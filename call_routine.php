@@ -26,55 +26,6 @@ if (!$conn) {
 // sends the data here 
 if (isset($_POST['routine'])) {
     $routine = $_POST['routine'];
-
-    // READ_STUDENT NOT IN USE!!!
-    /*if ($routine == "read_student") {
-        if (isset($_POST['s_idx'])) {
-            
-            $s_idx = $_POST['s_idx'];
-            if ($s_idx == "") {
-                echo "This field can't be empty.";
-                echo '<br><br>';
-                echo '<button onclick="location.href=\'index.php\';">Go back</button>';
-                exit();
-            }
-            $result = mysqli_query($conn, "CALL read_student($s_idx)");
-
-            if (mysqli_num_rows($result) > 0) { // checks if the result has a row
-                $students = array();  // makes an empty array
-                
-                while ($row = mysqli_fetch_assoc($result)) { // gets one row of data
-                    $students[] = $row; // appends student with the row of data
-                }
-                
-                include 'index.php';
-            
-            } else {
-                echo "Error: No student found at index $s_idx.";
-                echo '<br><br>';
-                echo '<button onclick="location.href=\'index.php\';">Go back</button>';
-            }
-        } else {
-            echo "Error: Student ID is required.";
-        }
-    } 
-    // READ_ALL_STUDENT NOT IN USE!!!
-    else if ($routine == "read_all_student") {
-        $result = mysqli_query($conn, "CALL read_all_student()");
-        if (mysqli_num_rows($result) > 0) {
-                $students = array();
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $students[] = $row;
-                }
-                
-                include 'index.php';
-                
-        } else {
-            echo "Empty database";
-            echo '<br><br>';
-            echo '<button onclick="location.href=\'index.php\';">Go back</button>';
-        }
-    } */
     // UPDATE_STUDENT
     if ($routine == "update_student") {
         if (isset($_POST['s_u_idx'])) {
