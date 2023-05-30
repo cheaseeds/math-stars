@@ -89,30 +89,7 @@ $result = mysqli_query($conn, "SELECT `idx`, `uid`, CONCAT(`first_name`, ' ', `l
     <div class="row">
         <div class="container">
             <div class="column-buttons">
-                <!--
-                <div class="form-container">
-                    <h2>Read Student Data</h2>
-                    <form method="post" action="call_routine.php">
-                        <input type="hidden" name="routine" value="read_student">
-                        <input type="number" name="s_idx" id="s_idx" min="0" max="99999999999" placeholder="Student index">
-                        
-                        <button class="button-47" type="submit">Submit</button>
-                    </form>
-                </div>
-            
-                <br>
-                
-                <div class="form-container">
-                    <h2>Display All Student Data</h2>        
-                    <form method="post" action="call_routine.php">
-                        <input type="hidden" name="routine" value="read_all_student">
-                        
-                        <button class="button-47" type="submit">Display</button>
-                    </form>
-                </div>
-                
-                <br>
-                -->
+        
                 <div class="form-container">
                     <h2>Update Student Data</h2>       
                     <form method="post" action="call_routine.php">
