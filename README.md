@@ -5,9 +5,3 @@
 * The goal of this program will be to minimize time spent managing student stars by hand and digitalize the reward system.
 * Developed and testing utilizing XAMPP.
 
-
-
-
-## Bugs:
-
-* Nothing to note at the moment
